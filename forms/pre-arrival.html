@@ -1,0 +1,120 @@
+<form id="preArrivalForm" class="form-section">
+    <h3>Pre-arrival Biofouling Report</h3>
+    
+    <div class="alert alert-info">
+        This form must be submitted at least 12 hours but no more than 96 hours before arrival.
+    </div>
+
+    <div class="form-section">
+        <h4>Vessel Details</h4>
+        
+        <div class="form-group">
+            <label for="vesselName">Vessel Name*</label>
+            <input type="text" id="vesselName" name="vesselName" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="imoNumber">IMO Number*</label>
+            <input type="text" id="imoNumber" name="imoNumber" class="form-control" required 
+                   pattern="[0-9]{7}" title="Please enter a valid 7-digit IMO number">
+        </div>
+
+        <div class="form-group">
+            <label for="expectedArrival">Expected Arrival Date/Time*</label>
+            <input type="datetime-local" id="expectedArrival" name="expectedArrival" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="arrivalPort">First Port of Arrival*</label>
+            <input type="text" id="arrivalPort" name="arrivalPort" class="form-control" required>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h4>Biofouling Management Method</h4>
+        
+        <div class="form-group">
+            <label>Select Management Option*</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="managementOption" value="bfmp" required>
+                    Option 1: Biofouling Management Plan (BFMP)
+                </label>
+                <label>
+                    <input type="radio" name="managementOption" value="cleaning">
+                    Option 2: Recent Cleaning (within 30 days)
+                </label>
+                <label>
+                    <input type="radio" name="managementOption" value="alternative">
+                    Option 3: Alternative Method (pre-approved)
+                </label>
+            </div>
+        </div>
+
+        <!-- Conditional sections based on selected option -->
+        <div id="bfmpSection" class="hidden">
+            <div class="form-group">
+                <label for="bfmpDate">BFMP Implementation Date*</label>
+                <input type="date" id="bfmpDate" name="bfmpDate" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="bfmpDocument">Upload BFMP*</label>
+                <input type="file" id="bfmpDocument" name="bfmpDocument" class="form-control"
+                       accept=".pdf,.doc,.docx">
+            </div>
+        </div>
+
+        <div id="cleaningSection" class="hidden">
+            <div class="form-group">
+                <label for="cleaningDate">Date of Last Cleaning*</label>
+                <input type="date" id="cleaningDate" name="cleaningDate" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="cleaningReport">Upload Cleaning Report*</label>
+                <input type="file" id="cleaningReport" name="cleaningReport" class="form-control"
+                       accept=".pdf,.doc,.docx">
+            </div>
+            <div class="form-group">
+                <label for="cleaningPhotos">Upload Cleaning Photos*</label>
+                <input type="file" id="cleaningPhotos" name="cleaningPhotos" class="form-control"
+                       accept="image/*" multiple>
+            </div>
+        </div>
+
+        <div id="alternativeSection" class="hidden">
+            <div class="form-group">
+                <label for="approvalReference">Department Approval Reference*</label>
+                <input type="text" id="approvalReference" name="approvalReference" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="approvalDocument">Upload Approval Document*</label>
+                <input type="file" id="approvalDocument" name="approvalDocument" class="form-control"
+                       accept=".pdf,.doc,.docx">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h4>Recent Voyage History</h4>
+        
+        <table class="voyage-table">
+            <thead>
+                <tr>
+                    <th>Port</th>
+                    <th>Arrival Date</th>
+                    <th>Departure Date</th>
+                    <th>Activities</th>
+                </tr>
+            </thead>
+            <tbody id="voyageTableBody">
+                <!-- Dynamic rows added here -->
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-secondary" onclick="addVoyageRow()">Add Port Visit</button>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Submit Pre-arrival Report</button>
+        <button type="button" class="btn btn-secondary" onclick="generatePDF('preArrivalForm')">Generate PDF</button>
+    </div>
+</form>

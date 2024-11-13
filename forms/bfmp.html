@@ -1,0 +1,144 @@
+<form id="bfmpForm" class="form-section">
+    <h3>Biofouling Management Plan (BFMP)</h3>
+
+    <!-- Vessel Identification -->
+    <div class="form-group">
+        <label for="companyName">Company Name*</label>
+        <input type="text" id="companyName" name="companyName" class="form-control" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="vesselName">Vessel Name*</label>
+        <input type="text" id="vesselName" name="vesselName" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="imoNumber">IMO Number*</label>
+        <input type="text" id="imoNumber" name="imoNumber" class="form-control" required pattern="[0-9]{7}" title="Please enter a valid 7-digit IMO number">
+    </div>
+    
+    <div class="form-group">
+        <label for="planDate">Plan Date*</label>
+        <input type="date" id="planDate" name="planDate" class="form-control" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="nextReviewDate">Next Review Date*</label>
+        <input type="date" id="nextReviewDate" name="nextReviewDate" class="form-control" required>
+    </div>
+    
+    <!-- Vessel Particulars -->
+    <div class="form-section">
+        <h4>Vessel Particulars</h4>
+        
+        <div class="form-group">
+            <label for="vesselType">Vessel Type*</label>
+            <select id="vesselType" name="vesselType" class="form-control" required>
+                <option value="">Select vessel type...</option>
+                <option value="cargo">Cargo Vessel</option>
+                <option value="tanker">Tanker</option>
+                <option value="passenger">Passenger Ship</option>
+                <option value="fishing">Fishing Vessel</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="grossTonnage">Gross Tonnage*</label>
+            <input type="number" id="grossTonnage" name="grossTonnage" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="vesselLength">Length Overall (m)*</label>
+            <input type="number" id="vesselLength" name="vesselLength" class="form-control" required>
+        </div>
+    </div>
+
+    <!-- Operating Profile -->
+    <div class="form-section">
+        <h4>Operating Profile</h4>
+        
+        <div class="form-group">
+            <label for="operatingSpeed">Typical Operating Speed (knots)*</label>
+            <input type="number" id="operatingSpeed" name="operatingSpeed" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="tradingRoutes">Typical Trading Routes*</label>
+            <textarea id="tradingRoutes" name="tradingRoutes" class="form-control" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="operatingAreas">Operating Areas*</label>
+            <textarea id="operatingAreas" name="operatingAreas" class="form-control" required></textarea>
+        </div>
+    </div>
+
+    <!-- Biofouling Risk Assessment -->
+    <div class="form-section">
+        <h4>Biofouling Risk Assessment</h4>
+        
+        <div class="form-group">
+            <label for="biofoulingRisk">Biofouling Risk Factors (e.g., high-risk areas, tropical waters)</label>
+            <textarea id="biofoulingRisk" name="biofoulingRisk" class="form-control"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="nicheAreas">Niche Areas (e.g., sea chests, thrusters)*</label>
+            <textarea id="nicheAreas" name="nicheAreas" class="form-control" required></textarea>
+        </div>
+    </div>
+
+    <!-- Anti-Fouling System Details -->
+    <div class="form-section">
+        <h4>Anti-Fouling System Details</h4>
+        
+        <div class="form-group">
+            <label for="afsType">Anti-Fouling System Type*</label>
+            <select id="afsType" name="afsType" class="form-control" required>
+                <option value="">Select AFS type...</option>
+                <option value="biocidal">Biocidal Coating</option>
+                <option value="non-biocidal">Non-biocidal Coating</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="afsDate">Date of Last Application*</label>
+            <input type="date" id="afsDate" name="afsDate" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="afsMaintenance">AFS Maintenance and Inspection Notes</label>
+            <textarea id="afsMaintenance" name="afsMaintenance" class="form-control"></textarea>
+        </div>
+    </div>
+
+    <!-- Documentation and Record Keeping -->
+    <div class="form-section">
+        <h4>Documentation and Record Keeping</h4>
+
+        <div class="form-group">
+            <label for="inspectionLogs">Inspection Logs</label>
+            <textarea id="inspectionLogs" name="inspectionLogs" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="cleaningLogs">Cleaning and Maintenance Logs</label>
+            <textarea id="cleaningLogs" name="cleaningLogs" class="form-control"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="wasteDisposal">Waste Disposal Records (e.g., disposal methods and location)</label>
+            <textarea id="wasteDisposal" name="wasteDisposal" class="form-control"></textarea>
+        </div>
+    </div>
+
+    <!-- Submission Actions -->
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save BFMP</button>
+        <button type="button" class="btn btn-secondary" onclick="generatePDF('bfmpForm')">Generate PDF</button>
+    </div>
+</form>
+
+<div id="formErrors" class="error-container"></div>

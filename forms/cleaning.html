@@ -1,0 +1,124 @@
+<form id="cleaningLogForm" class="form-section">
+    <h3>Biofouling Cleaning Log</h3>
+    
+    <div class="form-group">
+        <label for="cleaningDate">Cleaning Date*</label>
+        <input type="date" id="cleaningDate" name="cleaningDate" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="vesselName">Vessel Name*</label>
+        <input type="text" id="vesselName" name="vesselName" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="location">Location*</label>
+        <input type="text" id="location" name="location" class="form-control" required>
+    </div>
+
+    <div class="form-section">
+        <h4>Cleaning Details</h4>
+        
+        <div class="form-group">
+            <label for="cleaningMethod">Cleaning Method*</label>
+            <select id="cleaningMethod" name="cleaningMethod" class="form-control" required>
+                <option value="">Select cleaning method...</option>
+                <option value="manual">Manual Cleaning</option>
+                <option value="mechanical">Mechanical Cleaning</option>
+                <option value="waterjet">Water Jet</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="captureMethod">Capture Method*</label>
+            <select id="captureMethod" name="captureMethod" class="form-control" required>
+                <option value="">Select capture method...</option>
+                <option value="filter">Filtration System</option>
+                <option value="vacuum">Vacuum System</option>
+                <option value="containment">Containment Barrier</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="cleaning-areas-container">
+            <h5>Areas Cleaned</h5>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="cleanedAreas" value="hull"> Hull
+                </label>
+                <label>
+                    <input type="checkbox" name="cleanedAreas" value="propeller"> Propeller
+                </label>
+                <label>
+                    <input type="checkbox" name="cleanedAreas" value="seachests"> Sea Chests
+                </label>
+                <label>
+                    <input type="checkbox" name="cleanedAreas" value="rudder"> Rudder
+                </label>
+                <label>
+                    <input type="checkbox" name="cleanedAreas" value="thrusters"> Thrusters
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h4>Water Conditions</h4>
+        
+        <div class="form-group">
+            <label for="waterClarity">Water Clarity (meters)*</label>
+            <input type="number" id="waterClarity" name="waterClarity" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="tidalCurrent">Tidal Current (knots)*</label>
+            <input type="number" id="tidalCurrent" name="tidalCurrent" class="form-control" required>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h4>Waste Management</h4>
+        
+        <div class="form-group">
+            <label for="wasteVolume">Waste Volume (kg)*</label>
+            <input type="number" id="wasteVolume" name="wasteVolume" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="disposalMethod">Disposal Method*</label>
+            <select id="disposalMethod" name="disposalMethod" class="form-control" required>
+                <option value="">Select disposal method...</option>
+                <option value="approved">Approved Facility</option>
+                <option value="onshore">Onshore Treatment</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="disposalLocation">Disposal Location*</label>
+            <input type="text" id="disposalLocation" name="disposalLocation" class="form-control" required>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h4>Documentation</h4>
+        
+        <div class="form-group">
+            <label for="photos">Photo Documentation*</label>
+            <input type="file" id="photos" name="photos" class="form-control" accept="image/*" multiple required>
+        </div>
+
+        <div class="form-group">
+            <label for="comments">Additional Comments</label>
+            <textarea id="comments" name="comments" class="form-control" rows="4"></textarea>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save Cleaning Log</button>
+        <button type="button" class="btn btn-secondary" onclick="generatePDF('cleaningLogForm')">Generate PDF</button>
+    </div>
+</form>
+
+<div id="formErrors" class="error-container"></div>
